@@ -18,15 +18,12 @@
         </activity>
 
         <service android:name=".service.MyfirebaseInstanceService">
-
             <intent-filter>
-
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-
         </service>
 
-
+        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>
