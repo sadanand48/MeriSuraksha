@@ -32,9 +32,7 @@
             android:parentActivityName=".MainActivity"></activity>
         <receiver android:name=".Alarm"/>
 
-        <activity
-            android:name=".RegisterActivity"
-            android:parentActivityName=".MainActivity" />
+
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -50,7 +48,8 @@
 
         <activity
             android:name=".TrackerActivity"
-            android:label="Map"></activity>
+            android:label="Map"
+            android:parentActivityName=".MainActivity"></activity>
 
     </application>
 
