@@ -1,6 +1,7 @@
 package com.example.vaibhav.mosahajya.service;
 
 
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -13,6 +14,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import com.example.vaibhav.mosahajya.Alarm;
 import com.example.vaibhav.mosahajya.MainActivity;
 import com.example.vaibhav.mosahajya.R;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -36,6 +39,11 @@ public class MyfirebaseInstanceService extends FirebaseMessagingService {
 
         String notificationTitle = null, notificationBody = null;
 
+        int time=5;
+        Intent i=new Intent(getApplicationContext(),Alarm.class);
+        PendingIntent pi=PendingIntent.getBroadcast(getApplicationContext(),0,i,0);
+        AlarmManager am=(AlarmManager)getSystemService(ALARM_SERVICE);
+        am.set(AlarmManager.RTC_WAKEUP,System.currentTimeMillis()+time*1000,pi);
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
