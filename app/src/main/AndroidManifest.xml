@@ -23,7 +23,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

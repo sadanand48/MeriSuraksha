@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
+
+    <!--
 
     <TextView
         android:id="@+id/register_details"
@@ -82,4 +84,68 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.55" />
-</android.support.constraint.ConstraintLayout>
+
+        -->
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTRATION PAGE"
+        android:textSize="28sp"
+        android:id="@+id/text"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/toolbar"
+        android:textColor="#000"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/text"
+        android:id="@+id/zxc"
+        android:src="@drawable/registration" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        app:met_floatingLabel="highlight"
+        android:layout_below="@+id/zxc"
+        android:layout_centerHorizontal="true"
+        android:hint="  Name"
+        android:drawableLeft="@drawable/ic_action_name"
+        android:inputType="text"
+        android:layout_marginTop="60dp"
+        android:id="@+id/editText2"/>
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_phone"
+        android:layout_below="@id/editText2"
+        android:inputType="phone"
+        android:hint="Mobile Number"
+        android:ems="10"
+        android:id="@+id/phone_number"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SUBMIT"
+        android:textStyle="bold"
+        android:layout_below="@id/phone_number"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:id="@+id/submit"/>
+
+
+
+
+
+</RelativeLayout>

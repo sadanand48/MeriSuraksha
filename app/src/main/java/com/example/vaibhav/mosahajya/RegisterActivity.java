@@ -3,6 +3,7 @@ package com.example.vaibhav.mosahajya;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +37,11 @@ public class RegisterActivity extends AppCompatActivity {
         hm=new HashMap<String, String>();
         firebaseDatabase=FirebaseDatabase.getInstance();
        reference=firebaseDatabase.getReference();
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Registration Page");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
