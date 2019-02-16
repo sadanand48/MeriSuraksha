@@ -7,6 +7,8 @@
     android:background="@drawable/background"
     tools:context=".MainActivity">
 
+
+
     <!--
     <TextView
         android:id="@+id/not_registered"
@@ -26,6 +28,21 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="50dp"
+            android:textSize="23sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:gravity="center_horizontal"/>
 
         <TextView
             android:layout_width="wrap_content"
