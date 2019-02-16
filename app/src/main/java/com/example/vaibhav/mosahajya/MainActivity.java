@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_SMS = 0;
     private static final int REQ_PICK_CONTACT = 2;
     private BroadcastReceiver sentstatusreciever, deliveredstatusreciever;
+    private static final int PERMISSION_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,19 +91,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, TrackerActivity.class));
             }
         });
-        /*
+
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
 
         acelval = SensorManager.GRAVITY_EARTH;
         acelLast = SensorManager.GRAVITY_EARTH;
         shake = 0.00f;
-        */
+
 
 
     }
 
-    /*
+
     private final SensorEventListener sensorListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -122,8 +123,34 @@ public class MainActivity extends AppCompatActivity {
             {
                 Toast.makeText(getApplicationContext(),"gesture invoked",Toast.LENGTH_SHORT).show();
 
+                if (Build.VERSION.SDK_INT>=23){
+
+                    if (checkPermission()){
+
+                        Log.e("permission","Permission already granted");
+                    }
+                    else {
+
+                        requestPermissions();
+                    }
+                }
+
+                String sms = "Please help me";
+                String phone = "+917762824363";
+                if(checkPermission()){
+
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage(phone,null,sms,null,null);
+
+                }
+                else {
+
+                    Toast.makeText(MainActivity.this,"Permission Denied",Toast.LENGTH_SHORT).show();
+                }
 
 
+
+                /*
                 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     int hasSMSPermission = checkSelfPermission(Manifest.permission.SEND_SMS);
                     if (hasSMSPermission != PackageManager.PERMISSION_GRANTED) {
@@ -145,7 +172,9 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                     sendMySMS();
+
                 }
+                */
 
 
 
@@ -157,8 +186,30 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+
+
         }
     };
+
+    private void requestPermissions() {
+
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_CODE);
+
+    }
+
+
+    private boolean checkPermission() {
+
+        int result = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.SEND_SMS);
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    /*
 
     private void sendMySMS() {
 
@@ -322,7 +373,30 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     */
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    Toast.makeText(MainActivity.this,
+                            "Permission accepted", Toast.LENGTH_LONG).show();
+
+                } else {
+                    Toast.makeText(MainActivity.this,
+                            "Permission denied", Toast.LENGTH_LONG).show();
+
+
+                }
+                break;
+        }
+    }
+
 }
+
+
 
 
 
