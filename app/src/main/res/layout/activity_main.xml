@@ -46,6 +46,29 @@
             android:layout_marginRight="15dp"
             android:layout_toRightOf="@id/dashboard"
             android:src="@drawable/user" />
+        <!--
+
+        <TextView
+            android:id="@+id/message_status_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:text="Message not sent yet."
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#ffff" />
+        <TextView
+            android:id="@+id/delivery_status_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:text="Message not delivered yet."
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#ffff" />
+
+            -->
+
 
 
 
