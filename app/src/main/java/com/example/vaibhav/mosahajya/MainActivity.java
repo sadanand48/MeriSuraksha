@@ -2,6 +2,8 @@ package com.example.vaibhav.mosahajya;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -19,11 +21,13 @@ import android.location.Location;
 import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Build;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -68,6 +72,18 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     SensorManager sensorManager;
     private float acelval;
     private float acelLast;
+    private Handler handler = new Handler();
+
+
+
+    private static final int uniqueID = 12345;
+
+    // Constants for the notification actions buttons.
+    private static final String ACTION_UPDATE_NOTIFICATION = "com.android.example.notifyme.ACTION_UPDATE_NOTIFICATION";
+    // Notification channel ID.
+    private static final String PRIMARY_CHANNEL_ID = "primary_notification_channel";
+    // Notification ID.
+    private static final int NOTIFICATION_ID = 0;
 
     //private TextView sendStatusTextView;
     //private TextView deliveryStatusTextView;
@@ -83,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     private GoogleApiClient googleApiClient;
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private LocationRequest locationRequest;
+    private NotificationManager mNotifyManager;
     private static final long UPDATE_INTERVAL = 5000, FASTEST_INTERVAL = 5000; // = 5 seconds
     // lists for permissions
     private ArrayList<String> permissionsToRequest;
@@ -90,21 +107,22 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     private ArrayList<String> permissions = new ArrayList<>();
     // integer for permissions results request
     private static final int ALL_PERMISSIONS_RESULT = 1011;
+    private NotificationCompat.Builder notifybuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar=(android.support.v7.widget.Toolbar)findViewById(R.id.toolbar2);
-        toolbar.setTitle("Mera Suraksha");
-        toolbar.setTitleTextColor(Color.WHITE);
-        toolbar.setBackgroundColor(Color.BLUE);
+        //toolbar=(android.support.v7.widget.Toolbar)findViewById(R.id.toolbar2);
+        //toolbar.setTitle("Mera Suraksha");
+        //toolbar.setTitleTextColor(Color.WHITE);
+        //toolbar.setBackgroundColor(Color.BLUE);
         FirebaseMessaging.getInstance().subscribeToTopic("pushNotifications");
         textView = (TextView) findViewById(R.id.not_registered);
         btntrack = (ImageButton) findViewById(R.id.trackerbtn);
         btnmaps = (ImageButton) findViewById(R.id.mapbtn);
         locationTv = findViewById(R.id.location);
-
+        //createNotificationChannel();
         permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
         permissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
 
@@ -140,6 +158,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 startActivity(new Intent(MainActivity.this, TrackerActivity.class));
             }
         });
+        btnmaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //sendnotification();
+            }
+        });
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
@@ -151,6 +176,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
 
     }
+
+
+
+
 
     private ArrayList<String> permissionsToRequest(ArrayList<String> wantedPermissions) {
         ArrayList<String> result = new ArrayList<>();

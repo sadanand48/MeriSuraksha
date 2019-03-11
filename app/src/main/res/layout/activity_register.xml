@@ -113,47 +113,51 @@
 
     <Button
         android:id="@+id/submit"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+
         android:layout_marginTop="332dp"
+        android:layout_centerHorizontal="true"
         android:text="Send Distress Message"
         android:textStyle="bold" />
-
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/vdorec"
+        android:layout_below="@+id/submit"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/vdorec"/>
     <Button
         android:id="@+id/buttonr"
-        android:layout_width="109dp"
-        android:layout_height="65dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="33dp"
-        android:layout_marginLeft="33dp"
-        android:layout_marginTop="472dp"
-        android:layout_marginEnd="242dp"
-        android:layout_marginRight="242dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vdorec"
+        android:layout_marginLeft="50dp"
         android:text="Record Video" />
+
+    <ImageView
+        android:id="@+id/vdoup"
+        android:layout_width="210dp"
+
+        android:layout_height="210dp"
+        android:layout_below="@+id/submit"
+        android:layout_marginLeft="245dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/upload" />
 
     <Button
         android:id="@+id/buttonr2"
         android:layout_width="wrap_content"
-        android:layout_height="69dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vdoup"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="251dp"
-        android:layout_marginLeft="251dp"
-        android:layout_marginTop="468dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="285dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginRight="38dp"
         android:text="Upload" />
 
 
