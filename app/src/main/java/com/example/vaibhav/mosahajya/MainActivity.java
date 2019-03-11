@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         btntrack = (ImageButton) findViewById(R.id.trackerbtn);
         btnmaps = (ImageButton) findViewById(R.id.mapbtn);
         locationTv = findViewById(R.id.location);
-        //createNotificationChannel();
+        createNotificationChannel();
         permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
         permissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
 
@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             @Override
             public void onClick(View v) {
 
-                //sendnotification();
+                sendnotification();
             }
         });
 
@@ -177,8 +177,43 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     }
 
+    private void sendnotification() {
+        notifybuilder = getNotificationBuilder();
+
+    }
+    public void createNotificationChannel(){
+        mNotifyManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = new NotificationChannel(PRIMARY_CHANNEL_ID,
+                    "Mascot Notification", NotificationManager
+                    .IMPORTANCE_HIGH);
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.enableVibration(true);
+            notificationChannel.setDescription("Notification from Mascot");
 
 
+            notificationChannel.setVibrationPattern(new long[]{0, 1000, 500, 1000});
+
+            mNotifyManager.createNotificationChannel(notificationChannel);
+
+            // Create a NotificationChannel
+        }
+    }
+
+    private NotificationCompat.Builder getNotificationBuilder(){
+
+        NotificationCompat.Builder notifyBuilder = new NotificationCompat.Builder(this,PRIMARY_CHANNEL_ID)
+                .setContentTitle("Emergency Help")
+                .setContentText("Police has responded to your request")
+                .setSmallIcon(R.drawable.ic_notify)
+                .setAutoCancel(true);
+        Intent intent = new Intent(this,MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        notifyBuilder.setContentIntent(pendingIntent);
+        handler.postDelayed(runnable,10*1000);
+        return notifyBuilder;
+    }
 
 
     private ArrayList<String> permissionsToRequest(ArrayList<String> wantedPermissions) {
@@ -499,6 +534,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         }
 
+
     }
 
     /*
@@ -665,6 +701,16 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         }
     }
     */
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            nm.notify(uniqueID, notifybuilder.build());
+        }
+
+
+    };
 
 
 
