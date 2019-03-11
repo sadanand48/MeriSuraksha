@@ -44,25 +44,6 @@
             app:layout_constraintStart_toStartOf="parent"
             android:gravity="center_horizontal"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DASHBOARD"
-            android:textColor="#ffff"
-            android:id="@+id/dashboard"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="25dp" />
-
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginLeft="98dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_toRightOf="@id/dashboard"
-            android:src="@drawable/user" />
         <!--
 
         <TextView
@@ -87,42 +68,41 @@
             -->
 
 
-
-
-
-
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/breadcrumb"
-            android:background="#00000000"
-            android:layout_marginTop="90dp"
-            android:layout_marginLeft="30dp"
+            android:id="@+id/trackerbtn"
+            android:layout_width="81dp"
+            android:layout_height="95dp"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/trackerbtn"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="105dp"
+            android:background="#00000000"
+            android:src="@drawable/loc3" />
 
         <TextView
+            android:id="@+id/qwe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Track Your Location"
-            android:id="@+id/qwe"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/trackerbtn"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="30dp"
-            android:textStyle="bold"
+            android:layout_marginTop="-2dp"
+            android:text="Track Your Location"
+            android:textColor="#ffff"
             android:textSize="18sp"
-            android:layout_marginTop="12dp"
-            android:textColor="#ffff"/>
+            android:textStyle="bold" />
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/qwe"
-            android:layout_centerHorizontal="true"
             android:id="@+id/mapbtn"
-            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="148dp"
+            android:layout_below="@+id/qwe"
+            android:layout_alignEnd="@+id/not_registered"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="44dp"
+            android:adjustViewBounds="true"
             android:background="#00000000"
-            android:src="@drawable/dfd" />
+            android:src="@drawable/alert1" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -140,7 +120,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Want to Register to get notification ?"
+            android:text="Alert the Surrounding Areas?"
             android:textColor="#ffff"
             android:textSize="18sp"
             android:id="@+id/not_registered"
@@ -148,6 +128,21 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:textStyle="bold"/>
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:background="?attr/colorPrimary"
+            android:clipToPadding="false"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
 
     </RelativeLayout>
 

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -55,6 +56,8 @@ import java.util.Map;
 
 import static android.Manifest.permission.SEND_SMS;
 import android.telephony.SmsManager;
+import android.widget.Toolbar;
+
 import java.util.List;
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
@@ -74,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     //private static final int REQ_PICK_CONTACT = 2;
     //private BroadcastReceiver sentstatusreciever, deliveredstatusreciever;
     private static final int PERMISSION_REQUEST_CODE = 1;
-
+    private android.support.v7.widget.Toolbar toolbar;
     private Location location;
     private TextView locationTv;
     private GoogleApiClient googleApiClient;
@@ -92,6 +95,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolbar=(android.support.v7.widget.Toolbar)findViewById(R.id.toolbar2);
+        toolbar.setTitle("Mera Suraksha");
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setBackgroundColor(Color.BLUE);
         FirebaseMessaging.getInstance().subscribeToTopic("pushNotifications");
         textView = (TextView) findViewById(R.id.not_registered);
         btntrack = (ImageButton) findViewById(R.id.trackerbtn);

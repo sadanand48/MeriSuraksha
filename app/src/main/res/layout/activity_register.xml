@@ -92,60 +92,69 @@
         layout="@layout/toolbar"/>
 
     <TextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="REGISTRATION PAGE"
-        android:textSize="28sp"
-        android:id="@+id/text"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:text="ALERT"
         android:textColor="#000"
-        android:textStyle="bold"/>
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
     <ImageView
+        android:id="@+id/zxc"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/text"
-        android:id="@+id/zxc"
-        android:src="@drawable/registration" />
-
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        app:met_floatingLabel="highlight"
-        android:layout_below="@+id/zxc"
         android:layout_centerHorizontal="true"
-        android:hint="  Name"
-        android:drawableLeft="@drawable/ic_action_name"
-        android:inputType="text"
-        android:layout_marginTop="60dp"
-        android:id="@+id/editText2"/>
-
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_phone"
-        android:layout_below="@id/editText2"
-        android:inputType="phone"
-        android:hint="Mobile Number"
-        android:ems="10"
-        android:id="@+id/phone_number"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="47dp"
+        android:src="@drawable/alert" />
 
     <Button
+        android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SUBMIT"
-        android:textStyle="bold"
-        android:layout_below="@id/phone_number"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:id="@+id/submit"/>
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="332dp"
+        android:text="Send Distress Message"
+        android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/buttonr"
+        android:layout_width="109dp"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="472dp"
+        android:layout_marginEnd="242dp"
+        android:layout_marginRight="242dp"
+        android:layout_marginBottom="30dp"
+        android:text="Record Video" />
 
-
+    <Button
+        android:id="@+id/buttonr2"
+        android:layout_width="wrap_content"
+        android:layout_height="69dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="251dp"
+        android:layout_marginLeft="251dp"
+        android:layout_marginTop="468dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginBottom="30dp"
+        android:text="Upload" />
 
 
 </RelativeLayout>

@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.vaibhav.mosahajya.Alarm;
 import com.example.vaibhav.mosahajya.MainActivity;
@@ -59,8 +60,9 @@ public class MyfirebaseInstanceService extends FirebaseMessagingService {
 
     private void sendNotification(String notificationTitle, String notificationBody) {
         Intent intent = new Intent(this, MainActivity.class);
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=12.9705957,79.160067"));
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, browserIntent,
                 PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
